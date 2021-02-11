@@ -1,0 +1,27 @@
+@mixin no-shadow ($selector) {//se quita la sombra pasando el elemento como parametro
+    #{$selector}{
+        box-shadow: 0px 0px 0px transparent, 0px 0px 0px transparent , 0px 0px 0px transparent !important;
+    }
+}
+.v-carousel__controls .v-item-group{
+    width: 100%;
+    padding: 12px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1264px) {
+    .v-carousel__controls .v-item-group{
+        max-width: 1185px;
+    }
+}
+
+@media (min-width: 960px) and (max-width: 1264px){
+    .v-carousel__controls .v-item-group{
+        max-width: 900px;
+        width: 100% !important;
+    }
+}
+
+// padding: 4px 16px
+   
