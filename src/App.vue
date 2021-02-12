@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import toolbar from './components/Toolbar.vue';
+import toolbar from './components/toolbar.vue';
 
 export default {
   name: 'App',
