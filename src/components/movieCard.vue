@@ -26,7 +26,7 @@
 
 <script>
   export default {
-    name: 'ProductCard',
+    name: 'movieCard',
     props: {
       movie: {
         type: Object,
@@ -100,6 +100,9 @@
 
   @media (max-width: 599px){
     .hover-movie{
+      &.pa-10{
+        padding: 20px !important;
+      }
       .hover-movie__wrapper{
         header.hover-movie__wrapper-header{
           h1{
@@ -112,8 +115,9 @@
           }
         }
         .hover-movie__wrapper-body{
-          border:1px dashed red;
           button.v-btn{
+            padding: 5px !important;
+            height: 28px;
             font-size: 0.7vw !important;
             &.mb-3{
               margin-bottom: 5px !important;

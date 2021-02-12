@@ -1,7 +1,7 @@
 <template>
     <v-container class="pt-5 pb-10 movie-app__container-tabs">
-        <v-tabs class="movie-app__category-tabs" v-model="tab" center-active @click="getByCategory()">
-            <v-tab v-for="(item, index) in tabsOpt" :key="index">
+        <v-tabs class="movie-app__category-tabs" v-model="tab" center-active>
+            <v-tab v-for="(item, index) in tabsOpt" :key="index" @click="changeCategory(item)">
               {{item.name}}
             </v-tab>
         </v-tabs>
@@ -9,29 +9,29 @@
             <v-tab-item v-for="(item, index) in tabsOpt" :key="index">
                 <v-row>
                     <v-col cols="6" sm="6" md="3" lg="3" xl="3" v-for="(movie, index) in moviesData" :key="index">
-                        <productCard :movie="movie"/>
+                        <movieCard :movie="movie"/>
                     </v-col>
                 </v-row>
             </v-tab-item>
         </v-tabs-items>
-        <v-progress-circular
-            v-if="loading"
-            indeterminate
-            color="purple"
-        ></v-progress-circular>
+        <section class="text-center my-10" v-if="loading">
+            <v-progress-circular
+                indeterminate
+            ></v-progress-circular>
+        </section>
     </v-container>
 </template>
 
 <script>
 import { MoviesController } from '@/controllers/movies'
-import productCard from '@/components/productCard.vue';
+import movieCard from '@/components/movieCard.vue';
 
 const MoviesCtrl = new MoviesController()
 
 export default {
     name: 'Categories',
     components: {
-        productCard
+        movieCard
     },
     data: () => ({
     tab: null,
@@ -40,33 +40,35 @@ export default {
     tabsOpt: [
         {
             name: 'All',
-            itt: '',
+            itt: 'son',
         },
         {
             name: 'New releases',
-            itt: '',
+            itt: 'fan',
         },
         {
             name: 'Most popular',
-            itt: '',
+            itt: 'last',
         },
         {
             name: 'Recomendations',
-            itt: '',
+            itt: 'war',
         },
     ] 
     }),
     methods: {
-        async getByCategory () {
-            console.warn('llamamos')
+        changeCategory (item) {
+            this.getMoviesByLetter (item.itt)
+        },
+        async getMoviesByLetter (letter) {
             this.loading = true
-            const movies = await MoviesCtrl.getMovies()
+            const movies = await MoviesCtrl.getMovies(letter)
             this.moviesData = movies.Search
             this.loading = false
         }
     },
     mounted () {
-        this.getByCategory()
+        this.getMoviesByLetter(this.tabsOpt[0].itt)
     }
 }
 </script>
@@ -76,9 +78,6 @@ export default {
     .movie-app__container-tabs{
         position: relative !important;
     }
-    /* .movie-app__category-tabs{
-       margin: 0px 40px;
-    } */
     @mixin arrows-tabs () {
       .v-slide-group__prev.v-slide-group__prev--disabled{
        display: none !important;
@@ -115,7 +114,7 @@ export default {
                     }
                 }
                 .v-tab{
-                    color: #000;
+                    color: $primary-theme-color;
                     margin:0px 20px;
                     padding: 0px !important;
                     min-width: auto;

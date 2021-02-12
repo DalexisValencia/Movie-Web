@@ -10,7 +10,13 @@
     margin-left: auto;
 }
 
-@media (min-width: 1264px) {
+@media (min-width: 1904px){
+    .v-carousel__controls .v-item-group {
+        max-width: 1785px;
+    }
+}
+
+@media (min-width: 1264px) and (max-width: 1904px){
     .v-carousel__controls .v-item-group{
         max-width: 1185px;
     }

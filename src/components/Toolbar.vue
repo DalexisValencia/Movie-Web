@@ -30,7 +30,7 @@
                     </ul>
                 </nav>
     
-                <div class="movie-app__burger-menu d-none d-sm-flex d-md-none" @click="drawerActive = !drawerActive"></div>
+                <div class="movie-app__burger-menu" @click="drawerActive = !drawerActive"></div>
             </v-container>
             
         </v-app-bar>
@@ -81,11 +81,17 @@
         }
     }
     .movie-app__burger-menu{
+        display: none;
         width: 35px;
         height: 35px;
         background-image: url('/assets/burger-menu.png');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+    }
+    @media (max-width: 959px) {
+        .movie-app__burger-menu{
+            display: flex !important;
+        }
     }
 </style>

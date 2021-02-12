@@ -8,14 +8,14 @@ export class Movies {
     }
     getCategories () {
         // const url = `${ApiUrl}/v1/user-address`
-        // console.error(url, 'url')
+        // console.error(url, 'url') http://www.omdbapi.com/?s=super&apikey=34119215&plot=full
     }
 
-    getMovieTest () {
-        return axios.get('http://www.omdbapi.com/?i=tt3896198&s=Batman&apikey=34119215')
+    getMovieByLetter (letter) {
+        return axios.get(`http://www.omdbapi.com/?s=${letter}&apikey=34119215`)
     }
 
     getMovie (imdbID) {
-        return axios.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=34119215`)
+        return axios.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=34119215&&plot=full`)
     }
 }
