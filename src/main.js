@@ -4,10 +4,12 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import { store } from './store'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 new Vue({
+  store: store,
   vuetify,
   router,
   render: h => h(App)

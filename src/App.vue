@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <toolbar/>
-    <v-main>
+    <v-main :class="{
+      'in-details': this.$route.path.indexOf('/details') != -1
+    }">
       <router-view class="view one"></router-view>
     </v-main>
   </v-app>

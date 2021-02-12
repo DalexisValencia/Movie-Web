@@ -4,14 +4,16 @@
         <v-app-bar app class="movie-app-bar">
             <v-container class="d-flex justify-space-between align-center" transition="scale-transition">
                 <div class="d-flex align-center">
-                    <v-img
-                        alt="Movie Logo"
-                        class="shrink"
-                        contain
-                        src="/assets/movies-log.png"
-                        transition="scale-transition"
-                        width="110"
-                    />
+                    <router-link to="/">
+                        <v-img
+                            alt="Movie Logo"
+                            class="shrink"
+                            contain
+                            src="/assets/movies-log.png"
+                            transition="scale-transition"
+                            width="110"
+                        />
+                    </router-link>
                 </div>
     
                 <nav class="right-main-nav d-none d-md-flex">

@@ -15,11 +15,7 @@ export class Movies {
         return axios.get('http://www.omdbapi.com/?i=tt3896198&s=Batman&apikey=34119215')
     }
 
-    getMoviesByCategory () {
-
-    }
-
-    getAllMovies () {
-
+    getMovie (imdbID) {
+        return axios.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=34119215`)
     }
 }

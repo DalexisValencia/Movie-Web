@@ -16,7 +16,7 @@ export default new Router({
             component: () => import('./views/Home.vue')
         },
         {
-            path: '/details/:rid?',
+            path: '/details/:imdbID?',
             name: 'details',
             component: () => import('./views/Details.vue')
         },
