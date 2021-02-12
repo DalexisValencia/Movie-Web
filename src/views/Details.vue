@@ -4,7 +4,7 @@
             <v-col cols="12" sm="5" md="4" lg="3" xl="3">
                 <v-img :src="movieData.Poster" max-height="550" contain></v-img>
             </v-col>
-            <v-col cols="12" sm="7" md="8" lg="9" xl="9" class="pr-0">
+            <v-col cols="12" sm="7" md="8" lg="9" xl="9" class="pr-0 movie-app__v-col-detail-wrapper">
                 <section class="py-10 movie-app__section-details">
                     <article>
                         <h2 class="pb-5 movie-app__plot-title">{{movieData.Title}}</h2>
@@ -124,6 +124,9 @@ export default {
             &.px-10{
                 padding: 0px !important;
             }
+            .movie-app__v-col-detail-wrapper{
+                margin-top: 35px;
+            }
         }
         .movie-app__details-container{
             .movie-app__section-details{
@@ -131,12 +134,12 @@ export default {
                     padding-top: 0px !important;
                 } 
                 .movie-app__plot-title{
-                    font-size: 5vw !important;
+                    font-size: 6vw !important;
                     text-align: center;
                 }
                 .movie-app__plot-details{
                     text-align: center;
-                    font-size: 3vw !important;
+                    font-size: 3.2vw !important;
                 }
             }
             .movie-app__action-details{
