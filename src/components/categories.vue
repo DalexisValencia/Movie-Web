@@ -1,11 +1,11 @@
 <template>
-    <v-container class="px-2">
+    <v-container class="pt-5 pb-10 movie-app__container-tabs">
         <v-tabs class="movie-app__category-tabs" v-model="tab" center-active @click="getByCategory()">
             <v-tab v-for="(item, index) in tabsOpt" :key="index">
               {{item.name}}
             </v-tab>
         </v-tabs>
-        <v-tabs-items v-model="tab" class="mt-4" v-if="!loading">
+        <v-tabs-items v-model="tab" class="mt-5" v-if="!loading">
             <v-tab-item v-for="(item, index) in tabsOpt" :key="index">
                 <v-row>
                     <v-col cols="6" sm="6" md="3" lg="3" xl="3" v-for="(movie, index) in moviesData" :key="index">
@@ -72,10 +72,13 @@ export default {
 </script>
 
 <style lang="scss">
-     @import '../css/vars.scss';
-    .movie-app__category-tabs{
-       // border:1px dashed blue;
+    @import '../css/vars.scss';
+    .movie-app__container-tabs{
+        position: relative !important;
     }
+    /* .movie-app__category-tabs{
+       margin: 0px 40px;
+    } */
     @mixin arrows-tabs () {
       .v-slide-group__prev.v-slide-group__prev--disabled{
        display: none !important;
@@ -89,7 +92,6 @@ export default {
         height: 37px;
         @include arrows-tabs();
         .v-slide-group__wrapper{
-            overflow: visible !important;
             .v-slide-group__content.v-tabs-bar__content{
                 .v-tabs-slider-wrapper{
                     color: transparent !important;
@@ -108,21 +110,41 @@ export default {
                         border-left: 7px solid transparent;
                         border-right: 7px solid transparent;
                         border-top: 7px solid $primary-theme-color;
-                        left: 50%;
+                        left: 45%;
                         margin-left: -5px;
                     }
                 }
                 .v-tab{
                     color: #000;
-                    padding:0px 20px;
+                    margin:0px 20px;
+                    padding: 0px !important;
                     min-width: auto;
                     width: auto;
                     text-transform: capitalize;
-                    font-size: 15px;
+                    font-size: 1rem;
                     font-family: 'Roboto';
                 }
           }
         }
       }
+    }
+    @media (max-width: 959px) {
+        .movie-app__category-tabs{
+            margin: 0px !important;
+        }
+    }
+    @media (max-width: 599px) {
+        .movie-app__category-tabs{
+            .v-item-group{
+                .v-slide-group__wrapper{
+                    .v-slide-group__content.v-tabs-bar__content{
+                        .v-tab{
+                            font-size: 3vw;
+                            margin: 0px 10px;
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>
