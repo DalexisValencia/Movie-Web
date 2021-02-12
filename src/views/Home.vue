@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import banners from '@/components/Banners.vue';
+import banners from '@/components/banners.vue';
 import categories from '@/components/categories.vue';
 
 export default {

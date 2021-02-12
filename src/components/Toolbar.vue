@@ -19,7 +19,7 @@
                 <nav class="right-main-nav d-none d-md-flex">
                     <ul class="d-flex">
                         <li>
-                            <router-link to="/">Home</router-link>
+                            <router-link to="/" active-class="active">Home</router-link>
                         </li>
                         <li>
                             <router-link to="/">Categories</router-link>
@@ -73,8 +73,16 @@
                     color: $secondary-theme-color;
                     font-weight: bold;
                     transition: 0.5s all;
+                    
+                    &.router-link-exact-active.active,
                     &:hover{
                         color: $tertiary-theme-color !important;
+                        &:not(.router-link-exact-active.active){
+                            color: $tertiary-theme-color !important;
+                        }
+                        &.router-link-exact-active.active:hover{
+                            color: $secondary-theme-color !important;
+                        }
                     }
                 }
             }
