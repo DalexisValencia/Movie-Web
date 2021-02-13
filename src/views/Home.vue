@@ -2,7 +2,6 @@
   <v-container :fluid="true" class="pa-0">
     <banners />
     <categories :moviesData="moviesData"/>
-    <!-- <router-link to="/details">A los detalles</router-link> -->
   </v-container>
 </template>
 

@@ -141,6 +141,14 @@ export default {
                             font-size: 3vw;
                             margin: 0px 10px;
                         }
+                         .v-tabs-slider-wrapper{
+                            &::after{
+                                border-left: 5px solid transparent;
+                                border-right: 5px solid transparent;
+                                border-top: 5px solid $primary-theme-color;
+                                left: 47%;
+                            }
+                        }
                     }
                 }
             }

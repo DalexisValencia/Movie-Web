@@ -1,5 +1,4 @@
 <template>
-  <!-- <router-link to="/details" class="movie-app__product-card-anchor"> -->
     <v-hover v-slot="{ hover }">
       <v-card class="movie-app__product-card">
         <v-img :aspect-ratio="16/24" :src="movie.Poster">
@@ -21,7 +20,6 @@
         </v-img>
       </v-card>
     </v-hover>
-  <!-- </router-link> -->
 </template>
 
 <script>
@@ -106,7 +104,7 @@
       .hover-movie__wrapper{
         header.hover-movie__wrapper-header{
           h1{
-            font-size: 2.5vw !important;
+            font-size: 2.8vw !important;
             height: 61px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
