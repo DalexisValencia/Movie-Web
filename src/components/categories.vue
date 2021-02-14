@@ -1,20 +1,23 @@
 <template>
     <v-container class="pt-5 pb-10 movie-app__container-tabs">
         <v-tabs class="movie-app__category-tabs" v-model="tab" center-active>
-            <v-tab v-for="(item, index) in tabsOpt" :key="index" @click="changeCategory(item)">
+            <!--En las tabs tambien podemos utilizar el evento @click="changeCategory(item.itt)"-->
+            <v-tab v-for="(item, index) in tabsOpt" :key="index">
               {{item.name}}
             </v-tab>
         </v-tabs>
         <v-tabs-items v-model="tab" class="mt-5" v-if="!loading">
             <v-tab-item v-for="(item, index) in tabsOpt" :key="index">
-                <v-row>
+                <v-row id="wraperMovies">
                     <v-col cols="6" sm="6" md="3" lg="3" xl="3" v-for="(movie, index) in moviesData" :key="index">
                         <movieCard :movie="movie"/>
                     </v-col>
                 </v-row>
             </v-tab-item>
         </v-tabs-items>
-        <section class="text-center my-10" v-if="loading">
+        <section class="text-center my-10" v-if="loading" :style="{
+            'height': this.heightWhileLoading,
+        }">
             <v-progress-circular
                 indeterminate
             ></v-progress-circular>
@@ -33,32 +36,40 @@ export default {
     components: {
         movieCard
     },
+    watch: {
+        tab (index) {
+            console.error(this.tabsOpt[index].itt)
+            this.changeCategory(this.tabsOpt[index].itt)
+        }
+    },
     data: () => ({
-    tab: null,
-    moviesData: [],
-    loading: true,
-    tabsOpt: [
-        {
-            name: 'All',
-            itt: 'son',
-        },
-        {
-            name: 'New releases',
-            itt: 'fan',
-        },
-        {
-            name: 'Most popular',
-            itt: 'last',
-        },
-        {
-            name: 'Recomendations',
-            itt: 'war',
-        },
+        tab: null,
+        moviesData: [],
+        loading: true,
+        heightWhileLoading: 'auto',
+        tabsOpt: [
+            {
+                name: 'All',
+                itt: 'son',
+            },
+            {
+                name: 'New releases',
+                itt: 'fan',
+            },
+            {
+                name: 'Most popular',
+                itt: 'last',
+            },
+            {
+                name: 'Recomendations',
+                itt: 'war',
+            },
     ] 
     }),
     methods: {
         changeCategory (item) {
-            this.getMoviesByLetter (item.itt)
+            this.heightWhileLoading = `${document.getElementById('wraperMovies').offsetHeight}px`
+            this.getMoviesByLetter (item)
         },
         async getMoviesByLetter (letter) {
             this.loading = true

@@ -14,7 +14,7 @@
                     </article>
                 </section>
             </v-col>
-            <v-col cols="12" class="text-right pr-0 movie-app__action-details">
+            <v-col cols="12" class="text-right pr-0 movie-app__action-details" v-if="movieData.Poster">
                 <v-btn class="movie-app__add-favorites-icon" :elevation="0">
                     <span class="movie-app__star-icon"></span>
                     Agregar a favoritos
